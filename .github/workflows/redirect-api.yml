@@ -1,14 +1,14 @@
-name: API
+name: Redirect API
 
 on:
   push:
     branches: [ "main" ]
     paths:
-      - Api/**
+      - RedirectApi/**
   pull_request:
     branches: [ "main" ]
     paths:
-      - Api/**
+      - RedirectApi/**
   workflow_dispatch: # manual trigger
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 9.0.x
+        dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -29,7 +29,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: dotnet publish
-      run: dotnet publish Api/src/UrlShortener.Api -c Release -o ${{env.DOTNET_ROOT}}/myapp 
+      run: dotnet publish RedirectApi/src/UrlShortener.RedirectApi -c Release -o ${{env.DOTNET_ROOT}}/myapp 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v4
       with:
@@ -50,9 +50,9 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: ${{ vars.API_RESOURCE_NAME }}
+          app-name: ${{ vars.REDIRECT_API_RESOURCE_NAME }}
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZURE_API_PUBLISH_PROFILE }}
+          publish-profile: ${{ secrets.AZURE_REDIRECT_API_PUBLISH_PROFILE }}
           package: .
 
 
@@ -69,9 +69,9 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: ${{ vars.API_RESOURCE_NAME }}
+          app-name: ${{ vars.REDIRECT_API_RESOURCE_NAME }}
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZURE_API_PUBLISH_PROFILE }}
+          publish-profile: ${{ secrets.AZURE_REDIRECT_API_PUBLISH_PROFILE }}
           package: .
 
 
@@ -89,7 +89,7 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: ${{ vars.API_RESOURCE_NAME }}
+          app-name: ${{ vars.REDIRECT_API_RESOURCE_NAME }}
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZURE_API_PUBLISH_PROFILE }}
+          publish-profile: ${{ secrets.AZURE_REDIRECT_API_PUBLISH_PROFILE }}
           package: .
