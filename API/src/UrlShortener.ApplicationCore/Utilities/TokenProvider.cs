@@ -24,7 +24,7 @@ namespace UrlShortener.ApplicationCore.Utilities
 
         public long GetToken()
         {
-            lock (_tokenLock)
+            using (_tokenLock.EnterScope())
             {
                 if (_currentTokenRange is null || _currentToken > _currentTokenRange?.End)
                 {
