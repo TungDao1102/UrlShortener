@@ -21,6 +21,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Libraries.Testing", "Libraries\UrlShortener.Libraries.Testing\UrlShortener.Libraries.Testing.csproj", "{597E2586-2556-4D04-AE07-83D1CD4486F3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TokenRanges", "TokenRanges", "{CB66E4B7-E5A2-4196-8319-DCE21C211B9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F6FBCCC8-B17C-494B-AAC4-04C87800A986}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9D492A2B-3589-438E-AB2E-7D2898936A80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.TokenRangeService", "TokenRanges\src\UrlShortener.TokenRangeService\UrlShortener.TokenRangeService.csproj", "{321A82C0-811D-4974-AC9B-F4373C1D224C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.TokenRangeService.Tests", "TokenRanges\tests\UrlShortener.TokenRangeService.Tests\UrlShortener.TokenRangeService.Tests.csproj", "{598FBA7E-1E6B-41F0-9D6B-0FE897E9AD4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +57,14 @@ Global
 		{597E2586-2556-4D04-AE07-83D1CD4486F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{597E2586-2556-4D04-AE07-83D1CD4486F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{597E2586-2556-4D04-AE07-83D1CD4486F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{321A82C0-811D-4974-AC9B-F4373C1D224C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{321A82C0-811D-4974-AC9B-F4373C1D224C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{321A82C0-811D-4974-AC9B-F4373C1D224C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{321A82C0-811D-4974-AC9B-F4373C1D224C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{598FBA7E-1E6B-41F0-9D6B-0FE897E9AD4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{598FBA7E-1E6B-41F0-9D6B-0FE897E9AD4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{598FBA7E-1E6B-41F0-9D6B-0FE897E9AD4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{598FBA7E-1E6B-41F0-9D6B-0FE897E9AD4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +77,10 @@ Global
 		{7949639A-3F84-4F17-97FC-FB36EA97F1EB} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{592795A6-0E3C-450D-8719-4AC858CF32CB} = {2B36633A-A0D3-485C-830F-FDBF21B47C29}
 		{597E2586-2556-4D04-AE07-83D1CD4486F3} = {3F7D6BE8-A0CA-416D-BA82-B278AC4DD6C8}
+		{F6FBCCC8-B17C-494B-AAC4-04C87800A986} = {CB66E4B7-E5A2-4196-8319-DCE21C211B9E}
+		{9D492A2B-3589-438E-AB2E-7D2898936A80} = {CB66E4B7-E5A2-4196-8319-DCE21C211B9E}
+		{321A82C0-811D-4974-AC9B-F4373C1D224C} = {F6FBCCC8-B17C-494B-AAC4-04C87800A986}
+		{598FBA7E-1E6B-41F0-9D6B-0FE897E9AD4F} = {9D492A2B-3589-438E-AB2E-7D2898936A80}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AFCFC017-FF33-454D-A1B6-CB7DA2F5E17C}
