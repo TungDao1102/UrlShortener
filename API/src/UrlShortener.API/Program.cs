@@ -1,11 +1,25 @@
+using Azure.Identity;
 using UrlShortener.API.Extensions;
+using UrlShortener.ApplicationCore.Utilities;
 using UrlShortener.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var keyVaultName = builder.Configuration["KeyVaultName"];
+if (!string.IsNullOrEmpty(keyVaultName))
+{
+    builder.Configuration.AddAzureKeyVault(
+        new Uri($"https://{keyVaultName}.vault.azure.net/"),
+        new DefaultAzureCredential());
+}
+
 builder.Services.AddApplicationService(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddSingleton(
+                new RedirectLinkBuilder(
+                    new Uri(builder.Configuration["RedirectService:Endpoint"]!)));
 
 builder.Services.AddHealthChecks()
     .AddCosmosHealthCheck(builder.Configuration)
@@ -14,6 +28,13 @@ builder.Services.AddHealthChecks()
             new Uri(builder.Configuration["TokenRangeService:Endpoint"]!),
             "healthz"),
         name: "token-range-service");
+
+builder.Services.AddHttpClient("TokenRangeService",
+    client =>
+    {
+        client.BaseAddress =
+            new Uri(builder.Configuration["TokenRangeService:Endpoint"]!);
+    });
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

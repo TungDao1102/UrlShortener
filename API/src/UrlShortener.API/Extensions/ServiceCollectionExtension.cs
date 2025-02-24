@@ -13,10 +13,6 @@ namespace UrlShortener.API.Extensions
             services.AddSingleton<TokenProvider>();
             services.AddScoped<IShortUrlGenerator, ShortUrlGenerator>();
             services.AddSingleton(TimeProvider.System);
-            services.AddSingleton(
-                new RedirectLinkBuilder(
-                    new Uri(configuration["RedirectService:Endpoint"]!)));
-
             return services;
         }
     }

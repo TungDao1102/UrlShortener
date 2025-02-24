@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using UrlShortener.API;
-using UrlShortener.ApplicationCore.Interfaces.Commons;
-using UrlShorterner.API.Core.Tests.InMemory;
-using UrlShortener.Libraries.Testing.Extensions;
 using UrlShortener.API.Commons;
+using UrlShortener.ApplicationCore.Interfaces.Commons;
+using UrlShortener.Libraries.Testing.Extensions;
+using UrlShorterner.API.Core.Tests.Auth;
+using UrlShorterner.API.Core.Tests.InMemory;
 
 namespace UrlShorterner.API.Core.Tests.Commons
 {
@@ -35,19 +37,17 @@ namespace UrlShorterner.API.Core.Tests.Commons
                             inMemoryStore);
 
                     services.Remove<ITokenRangeApiClient>();
-                    //   services.AddSingleton<ITokenRangeApiClient, FakeTokenRangeApiClient>();
+                    services.AddSingleton<ITokenRangeApiClient, FakeTokenRangeApiClient>();
 
-                    //   services.AddAuthentication(defaultScheme: "TestScheme")
-                    //      .AddScheme<AuthenticationSchemeOptions, TestAuthHandler>(
-                    //           "TestScheme", options => { });
+                    services.AddAuthentication(defaultScheme: "TestScheme")
+                       .AddScheme<AuthenticationSchemeOptions, TestAuthenticationHandler>(
+                            "TestScheme", options => { });
 
-                    services.AddAuthorization(options =>
-                    {
-                        options.DefaultPolicy = new AuthorizationPolicyBuilder()
+                    services.AddAuthorizationBuilder()
+                        .SetDefaultPolicy(new AuthorizationPolicyBuilder()
                             .RequireAuthenticatedUser()
-                            .Build();
-                        options.FallbackPolicy = null;
-                    });
+                            .Build())
+                        .SetFallbackPolicy(null);
 
                 }
             );
