@@ -9,6 +9,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2B36633A-A0D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.API", "API\src\UrlShortener.API\UrlShortener.API.csproj", "{FF2F4360-A76F-44A5-A92D-FD97BD597F17}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.ApplicationCore", "API\src\UrlShortener.ApplicationCore\UrlShortener.ApplicationCore.csproj", "{FA168CE8-C7FB-4184-897F-9F51D0CB0923}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShorterner.API.Core.Tests", "API\tests\UrlShorterner.API.Core.Tests\UrlShorterner.API.Core.Tests.csproj", "{7949639A-3F84-4F17-97FC-FB36EA97F1EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Infrastructure", "API\src\UrlShortener.Infrastructure\UrlShortener.Infrastructure.csproj", "{592795A6-0E3C-450D-8719-4AC858CF32CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{3F7D6BE8-A0CA-416D-BA82-B278AC4DD6C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Libraries.Testing", "Libraries\UrlShortener.Libraries.Testing\UrlShortener.Libraries.Testing.csproj", "{597E2586-2556-4D04-AE07-83D1CD4486F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +31,22 @@ Global
 		{FF2F4360-A76F-44A5-A92D-FD97BD597F17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF2F4360-A76F-44A5-A92D-FD97BD597F17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF2F4360-A76F-44A5-A92D-FD97BD597F17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA168CE8-C7FB-4184-897F-9F51D0CB0923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA168CE8-C7FB-4184-897F-9F51D0CB0923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA168CE8-C7FB-4184-897F-9F51D0CB0923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA168CE8-C7FB-4184-897F-9F51D0CB0923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7949639A-3F84-4F17-97FC-FB36EA97F1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7949639A-3F84-4F17-97FC-FB36EA97F1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7949639A-3F84-4F17-97FC-FB36EA97F1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7949639A-3F84-4F17-97FC-FB36EA97F1EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{592795A6-0E3C-450D-8719-4AC858CF32CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{592795A6-0E3C-450D-8719-4AC858CF32CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{592795A6-0E3C-450D-8719-4AC858CF32CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{592795A6-0E3C-450D-8719-4AC858CF32CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{597E2586-2556-4D04-AE07-83D1CD4486F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{597E2586-2556-4D04-AE07-83D1CD4486F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{597E2586-2556-4D04-AE07-83D1CD4486F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{597E2586-2556-4D04-AE07-83D1CD4486F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -26,5 +54,13 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2B36633A-A0D3-485C-830F-FDBF21B47C29} = {08F605E1-1067-4AA8-A72D-A9D9D07A2015}
 		{FF2F4360-A76F-44A5-A92D-FD97BD597F17} = {2B36633A-A0D3-485C-830F-FDBF21B47C29}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {08F605E1-1067-4AA8-A72D-A9D9D07A2015}
+		{FA168CE8-C7FB-4184-897F-9F51D0CB0923} = {2B36633A-A0D3-485C-830F-FDBF21B47C29}
+		{7949639A-3F84-4F17-97FC-FB36EA97F1EB} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{592795A6-0E3C-450D-8719-4AC858CF32CB} = {2B36633A-A0D3-485C-830F-FDBF21B47C29}
+		{597E2586-2556-4D04-AE07-83D1CD4486F3} = {3F7D6BE8-A0CA-416D-BA82-B278AC4DD6C8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AFCFC017-FF33-454D-A1B6-CB7DA2F5E17C}
 	EndGlobalSection
 EndGlobal
