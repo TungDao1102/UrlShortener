@@ -1,4 +1,5 @@
-﻿using UrlShortener.ApplicationCore.Interfaces.Commons;
+﻿using UrlShortener.API.Commons;
+using UrlShortener.ApplicationCore.Interfaces.Commons;
 using UrlShortener.ApplicationCore.Interfaces.Services;
 using UrlShortener.ApplicationCore.Services;
 using UrlShortener.ApplicationCore.Utilities;
@@ -12,7 +13,8 @@ namespace UrlShortener.API.Extensions
             services.AddScoped<IUrlService, UrlService>();
             services.AddSingleton<TokenProvider>();
             services.AddScoped<IShortUrlGenerator, ShortUrlGenerator>();
-            services.AddSingleton(TimeProvider.System);
+            services.AddSingleton(TimeProvider.System)
+                    .AddSingleton<IEnvironmentManager, EnvironmentManager>();
             return services;
         }
     }

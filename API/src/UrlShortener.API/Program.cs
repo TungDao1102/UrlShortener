@@ -1,5 +1,10 @@
 using Azure.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Identity.Web;
+using UrlShortener.API.Commons;
 using UrlShortener.API.Extensions;
+using UrlShortener.API.Jobs;
 using UrlShortener.ApplicationCore.Utilities;
 using UrlShortener.Infrastructure.Extensions;
 
@@ -36,6 +41,36 @@ builder.Services.AddHttpClient("TokenRangeService",
             new Uri(builder.Configuration["TokenRangeService:Endpoint"]!);
     });
 
+builder.Services.AddSingleton<ITokenRangeApiClient, TokenRangeApiClient>();
+builder.Services.AddHostedService<TokenManager>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApi(options =>
+    {
+        builder.Configuration.Bind("AzureAd", options);
+        options.TokenValidationParameters.NameClaimType = "name";
+    },
+        options => { builder.Configuration.Bind("AzureAd", options); });
+
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("AuthZPolicy", policyBuilder =>
+        policyBuilder.Requirements.Add(new ScopeAuthorizationRequirement()
+        {
+            RequiredScopesConfigurationKey = "AzureAd:Scopes"
+        }));
+
+builder.Services.AddAuthorization(options =>
+{
+    options.DefaultPolicy =
+        new AuthorizationPolicyBuilder(
+                JwtBearerDefaults.AuthenticationScheme)
+            .RequireAuthenticatedUser()
+            .Build();
+    // By default, all incoming requests will be authorized according to 
+    // the default policy    
+    options.FallbackPolicy = options.DefaultPolicy;
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -53,5 +88,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapGet("/", () => "API").AllowAnonymous();
 
 app.Run();
