@@ -19,7 +19,7 @@ namespace UrlShortener.TokenRangeService.Tests
         {
             var requestResponse = await _client.PostAsJsonAsync("/assign",
                 new AssignTokenRangeRequest("tests"));
-
+            //  using FluentAssertions 6 or below
             requestResponse.Should().BeSuccessful();
             var tokenRange = await requestResponse.Content
                 .ReadFromJsonAsync<TokenRangeResponse>();
