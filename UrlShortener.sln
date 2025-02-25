@@ -41,6 +41,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.RedirectApi", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.RedirectApi.Tests", "RedirectApi\tests\UrlShortener.RedirectApi.Tests\UrlShortener.RedirectApi.Tests.csproj", "{8F38ADBB-D5D9-4E81-9AFC-F083BC2D5304}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CosmosDbTrigger", "CosmosDbTrigger", "{7842FC0B-F7AA-49B2-8258-875E4F458BDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DE219057-821F-45A7-89AF-AFDBA18D43B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.CosmosDbTriggerFunction", "CosmosDbTrigger\src\UrlShortener.CosmosDbTriggerFunction\UrlShortener.CosmosDbTriggerFunction.csproj", "{6A6598AD-F8D6-46A2-8EF0-638A1CE65119}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +89,10 @@ Global
 		{8F38ADBB-D5D9-4E81-9AFC-F083BC2D5304}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F38ADBB-D5D9-4E81-9AFC-F083BC2D5304}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F38ADBB-D5D9-4E81-9AFC-F083BC2D5304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A6598AD-F8D6-46A2-8EF0-638A1CE65119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A6598AD-F8D6-46A2-8EF0-638A1CE65119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A6598AD-F8D6-46A2-8EF0-638A1CE65119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A6598AD-F8D6-46A2-8EF0-638A1CE65119}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +113,8 @@ Global
 		{B4EE7646-8C48-451D-95CF-6F5157A5212D} = {03C61B5F-3936-438B-B936-25F163000AA9}
 		{223C3057-83F1-43EF-A371-3006758D3DC2} = {4611B795-066D-42FB-BEF1-7A876AA38B7E}
 		{8F38ADBB-D5D9-4E81-9AFC-F083BC2D5304} = {B4EE7646-8C48-451D-95CF-6F5157A5212D}
+		{DE219057-821F-45A7-89AF-AFDBA18D43B3} = {7842FC0B-F7AA-49B2-8258-875E4F458BDC}
+		{6A6598AD-F8D6-46A2-8EF0-638A1CE65119} = {DE219057-821F-45A7-89AF-AFDBA18D43B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AFCFC017-FF33-454D-A1B6-CB7DA2F5E17C}
