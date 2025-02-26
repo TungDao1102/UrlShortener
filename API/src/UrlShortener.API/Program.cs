@@ -1,4 +1,5 @@
 using Azure.Identity;
+using Azure.Monitor.OpenTelemetry.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Identity.Web;
@@ -71,6 +72,28 @@ builder.Services.AddAuthorization(options =>
     options.FallbackPolicy = options.DefaultPolicy;
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowWebApp", policy =>
+    {
+        if (builder.Configuration["WebAppEndpoints"] is null)
+            return;
+
+        var origins = builder.Configuration["WebAppEndpoints"]!.Split(",");
+
+        policy
+            .WithOrigins([.. origins])
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
+var telemetryConnectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"];
+if (telemetryConnectionString is not null)
+    builder.Services
+        .AddOpenTelemetry()
+        .UseAzureMonitor();
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -85,9 +108,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("AllowWebApp");
+
+app.MapHealthChecks("/healthz")
+    .AllowAnonymous();
 
 app.MapGet("/", () => "API").AllowAnonymous();
 
